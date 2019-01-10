@@ -15,6 +15,13 @@ jobs:
     inputs:
       version: $(DotNet.Sdk.Version)
 
+  - task: Docker@1
+    displayName: Docker login
+    inputs:
+      command: login
+      containerRegistryType: Container Registry
+      dockerRegistryEndpoint: DockerHub
+
   - bash: ./cake.sh --configuration=$(Cake.Configuration) --verbosity=$(Cake.Verbosity)
     displayName: Cake build
     env:
