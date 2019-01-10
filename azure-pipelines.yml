@@ -1,0 +1,21 @@
+trigger:
+- master
+
+variables:
+- group: Cake
+- group: DotNet
+
+jobs:
+- job: Linux
+  pool:
+    vmImage: ubuntu-16.04
+  steps:
+  - task: DotNetCoreInstaller@0
+    displayName: Install .NET Core SDK
+    inputs:
+      version: $(DotNet.Sdk.Version)
+
+  - bash: ./cake.sh --configuration=$(Cake.Configuration) --verbosity=$(Cake.Verbosity)
+    displayName: Cake build
+    env:
+      CAKE_PUBLISH: true
