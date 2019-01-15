@@ -14,5 +14,7 @@ ENV DOCKER_VERSION=18.09.1
 
 RUN curl -sSL https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz | tar -xzO docker/docker > /usr/bin/docker \
     && chmod +x /usr/bin/docker \
+    && docker --version \
+    && useradd -m -u 1001 vsts_azpcontainer \
     && groupadd docker \
-    && docker --version
+    && usermod -a -G docker vsts_azpcontainer
