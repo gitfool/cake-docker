@@ -12,7 +12,7 @@ RUN dotnet tool install Cake.Tool --version $CAKE_VERSION --tool-path /cake --ad
 # Install Docker client
 ENV DOCKER_VERSION=18.09.1
 
-RUN curl -sSL https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz | \
-    tar -xzO docker/docker > /usr/bin/docker \
+RUN curl -sSL https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz | tar -xzO docker/docker > /usr/bin/docker \
     && chmod +x /usr/bin/docker \
+    && groupadd docker \
     && docker --version
