@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.2.102-sdk-bionic
+FROM microsoft/dotnet:2.2.103-sdk-bionic
 
 # Install Cake tool
 ENV CAKE_VERSION=0.33.0-alpha0034
