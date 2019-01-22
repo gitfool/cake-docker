@@ -1,4 +1,4 @@
-#load nuget:?package=Cake.Dungeon&version=1.0.1-pre.1
+#load nuget:?package=Cake.Dungeon&version=1.0.1-pre.2
 
 Build.SetParameters
 (
@@ -9,6 +9,8 @@ Build.SetParameters
 
     runDockerBuild: true,
     runPublishToDocker: true,
+
+    dockerPushLatest: true,
 
     dockerImages: new[] { new DockerImage { Repository = "dockfool/cake-docker" } }
 );
