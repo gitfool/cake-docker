@@ -22,7 +22,5 @@ jobs:
       containerRegistryType: Container Registry
       dockerRegistryEndpoint: DockerHub
 
-  - bash: ./cake.sh --configuration=$(Cake.Configuration) --verbosity=$(Cake.Verbosity)
+  - bash: ./cake.sh --verbosity=$(Cake.Verbosity) --ispublisher=true
     displayName: Cake build
-    env:
-      CAKE_PUBLISH: true
