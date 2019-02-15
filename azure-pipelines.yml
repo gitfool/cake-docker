@@ -11,16 +11,16 @@ jobs:
     vmImage: ubuntu-16.04
   steps:
   - task: DotNetCoreInstaller@0
-    displayName: Install .NET Core SDK
     inputs:
       version: $(DotNet.Sdk.Version)
+    displayName: Install .NET Core SDK
 
   - task: Docker@1
-    displayName: Docker login
     inputs:
       command: login
       containerRegistryType: Container Registry
       dockerRegistryEndpoint: DockerHub
+    displayName: Docker login
 
   - bash: ./cake.sh --verbosity=$(Cake.Verbosity) --ispublisher=true
     displayName: Cake build
