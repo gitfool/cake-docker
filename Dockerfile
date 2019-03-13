@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.2.104-sdk-bionic
+FROM microsoft/dotnet:3.0-sdk-bionic
 
 ENV DOTNET_CLI_TELEMETRY_OPTOUT=1 \
     DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
