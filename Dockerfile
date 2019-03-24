@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y sudo \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Cake tool
-ENV CAKE_VERSION=0.33.0-alpha0086
+ENV CAKE_VERSION=0.33.0-alpha0125
 
 RUN dotnet tool install Cake.Tool --version $CAKE_VERSION --tool-path /cake --add-source https://www.myget.org/F/cake/api/v3/index.json \
     && dotnet nuget locals all --clear \
