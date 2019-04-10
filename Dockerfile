@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2.105-bionic
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2.203-bionic
 
 ENV DOTNET_CLI_TELEMETRY_OPTOUT=1 \
     DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
