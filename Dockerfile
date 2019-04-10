@@ -3,10 +3,6 @@ FROM mcr.microsoft.com/dotnet/core/sdk:2.2.203-bionic
 ENV DOTNET_CLI_TELEMETRY_OPTOUT=1 \
     DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
 
-# Install apt packages
-RUN apt-get update && apt-get install -y sudo \
-    && rm -rf /var/lib/apt/lists/*
-
 # Install Cake tool
 ENV CAKE_VERSION=0.33.0
 
