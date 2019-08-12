@@ -19,3 +19,10 @@ ENV DOCKER_VERSION=19.03.1
 RUN curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz | tar -xzO docker/docker > /usr/local/bin/docker \
     && chmod +x /usr/local/bin/docker \
     && docker --version
+
+# Install docker-compose
+ENV DOCKER_COMPOSE_VERSION=1.24.1
+
+RUN curl -fsSL https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose \
+    && chmod +x /usr/local/bin/docker-compose \
+    && docker-compose --version
