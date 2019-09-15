@@ -1,10 +1,6 @@
 trigger:
 - master
 
-variables:
-- group: Cake
-- group: DotNet
-
 jobs:
 - job: Linux
   pool:
@@ -12,7 +8,7 @@ jobs:
   steps:
   - task: DotNetCoreInstaller@1
     inputs:
-      version: $(DotNet.Sdk.Version)
+      version: 2.2.402
     displayName: Install .NET Core SDK
 
   - task: Docker@2
@@ -21,5 +17,5 @@ jobs:
       containerRegistry: DockerHub
     displayName: Docker login
 
-  - bash: ./cake.sh --verbosity=$(Cake.Verbosity) --ispublisher=true
+  - bash: ./cake.sh --verbosity=verbose --ispublisher=true
     displayName: Cake build
