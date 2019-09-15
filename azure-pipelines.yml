@@ -15,11 +15,10 @@ jobs:
       version: $(DotNet.Sdk.Version)
     displayName: Install .NET Core SDK
 
-  - task: Docker@1
+  - task: Docker@2
     inputs:
       command: login
-      containerRegistryType: Container Registry
-      dockerRegistryEndpoint: DockerHub
+      containerRegistry: DockerHub
     displayName: Docker login
 
   - bash: ./cake.sh --verbosity=$(Cake.Verbosity) --ispublisher=true
