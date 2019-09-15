@@ -10,7 +10,7 @@ jobs:
   pool:
     vmImage: ubuntu-16.04
   steps:
-  - task: DotNetCoreInstaller@0
+  - task: DotNetCoreInstaller@1
     inputs:
       version: $(DotNet.Sdk.Version)
     displayName: Install .NET Core SDK
