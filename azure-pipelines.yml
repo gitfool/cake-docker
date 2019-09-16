@@ -6,6 +6,9 @@ jobs:
   pool:
     vmImage: ubuntu-16.04
   steps:
+  - checkout: self
+    displayName: Checkout source
+
   - task: DotNetCoreInstaller@1
     inputs:
       version: 2.2.402

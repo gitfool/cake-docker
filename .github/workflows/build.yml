@@ -5,13 +5,13 @@ jobs:
   Linux:
     runs-on: ubuntu-18.04
     steps:
+    - name: Checkout source
+      uses: actions/checkout@v1
+
     - name: Install .NET Core SDK
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.2.402
-
-    - name: Checkout source
-      uses: actions/checkout@v1
 
     - name: Docker login
       uses: actions/docker/login@master
