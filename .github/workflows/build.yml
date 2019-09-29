@@ -11,7 +11,7 @@ jobs:
     - name: Install .NET Core SDK
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 2.2.402
+        dotnet-version: 3.0.100
 
     - name: Docker login
       uses: actions/docker/login@master
@@ -22,4 +22,5 @@ jobs:
     - name: Cake build
       run: ./cake.sh --verbosity=verbose --ispublisher=true
       env:
-        DOTNET_ROOT: /opt/hostedtoolcache/dncs/2.2.402/x64
+        DOTNET_ROLL_FORWARD_ON_NO_CANDIDATE_FX: 2
+        DOTNET_ROOT: /opt/hostedtoolcache/dncs/3.0.100/x64
