@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 jobs:
   Linux:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-16.04
     steps:
     - name: Checkout source
       uses: actions/checkout@v1
@@ -23,3 +23,4 @@ jobs:
       run: ./cake.sh --verbosity=verbose
       env:
         DOTNET_ROLL_FORWARD_ON_NO_CANDIDATE_FX: 2
+        DOTNET_ROOT: /opt/hostedtoolcache/dncs/3.0.100/x64
