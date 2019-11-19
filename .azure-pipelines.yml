@@ -4,7 +4,7 @@ trigger:
 jobs:
 - job: Linux
   pool:
-    vmImage: ubuntu-16.04
+    vmImage: ubuntu-latest
   steps:
   - checkout: self
     displayName: Checkout source
