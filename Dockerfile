@@ -15,7 +15,7 @@ RUN dotnet tool install Cake.Tool --version $CAKE_VERSION --tool-path /cake --ad
     && cake --info
 
 # Install Docker client
-ENV DOCKER_VERSION=19.03.2
+ENV DOCKER_VERSION=19.03.5
 
 RUN curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz | tar -xzO docker/docker > /usr/local/bin/docker \
     && chmod +x /usr/local/bin/docker \
