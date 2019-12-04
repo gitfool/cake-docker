@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.0.101-bionic
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1.100-bionic
 
 ENV DOTNET_CLI_TELEMETRY_OPTOUT=1 \
     DOTNET_ROLL_FORWARD_ON_NO_CANDIDATE_FX=2 \
