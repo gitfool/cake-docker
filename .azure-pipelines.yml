@@ -1,26 +1,31 @@
 trigger:
-- master
+  - "**"
+pr:
+  - master
+
+variables:
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_ROLL_FORWARD_ON_NO_CANDIDATE_FX: 2
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
 
 jobs:
-- job: Linux
-  pool:
-    vmImage: ubuntu-latest
-  steps:
-  - checkout: self
-    displayName: Checkout source
+  - job: Linux
+    pool:
+      vmImage: ubuntu-latest
+    steps:
+      - checkout: self
+        displayName: Checkout source
 
-  - task: DotNetCoreInstaller@1
-    inputs:
-      version: 3.1.100
-    displayName: Install .NET Core SDK
+      - task: DotNetCoreInstaller@1
+        inputs:
+          version: 3.1.101
+        displayName: Install dotnet
 
-  - task: Docker@2
-    inputs:
-      command: login
-      containerRegistry: DockerHub
-    displayName: Docker login
+      - task: Docker@2
+        inputs:
+          command: login
+          containerRegistry: DockerHub
+        displayName: Docker login
 
-  - bash: ./cake.sh --verbosity=verbose --ispublisher=true
-    env:
-      DOTNET_ROLL_FORWARD_ON_NO_CANDIDATE_FX: 2
-    displayName: Cake build
+      - bash: dotnet tool restore && dotnet cake --bootstrap && dotnet cake --verbosity=verbose --target=build --publish=true
+        displayName: Cake build

@@ -1,26 +1,32 @@
 name: Build
 on:
   push:
-    branches: [ master ]
+    branches: [ "**" ]
   pull_request:
     branches: [ master ]
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_ROLL_FORWARD_ON_NO_CANDIDATE_FX: 2
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
 
 jobs:
   Linux:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout source
-      uses: actions/checkout@v1
+      - name: Checkout source
+        uses: actions/checkout@v2
 
-    - name: Install .NET Core SDK
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 3.1.100
+      - name: Fetch unshallow
+        run: git fetch --prune --tags --unshallow
 
-    - name: Docker login
-      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+      - name: Install dotnet
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.101
 
-    - name: Cake build
-      run: ./cake.sh --verbosity=verbose
-      env:
-        DOTNET_ROLL_FORWARD_ON_NO_CANDIDATE_FX: 2
+      - name: Docker login
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
+
+      - name: Cake build
+        run: dotnet tool restore && dotnet cake --bootstrap --verbosity=verbose && dotnet cake --verbosity=verbose --target=build
