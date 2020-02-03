@@ -5,7 +5,7 @@ ENV DOTNET_CLI_TELEMETRY_OPTOUT=true \
     DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
 
 # Install Cake tool
-ENV CAKE_VERSION=0.36.0
+ENV CAKE_VERSION=0.37.0
 
 RUN dotnet tool install Cake.Tool --version $CAKE_VERSION --tool-path /cake \
     && dotnet nuget locals all --clear \
