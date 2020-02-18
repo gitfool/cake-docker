@@ -9,7 +9,6 @@ env:
   CAKE_SETTINGS_SHOWPROCESSCOMMANDLINE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   DOTNET_ROLL_FORWARD_ON_NO_CANDIDATE_FX: 2
-  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
 
 jobs:
   Linux:
@@ -25,6 +24,9 @@ jobs:
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: 3.1.101
+
+      - name: Touch dotnet
+        run: touch "$HOME/.dotnet/$(dotnet --version).dotnetFirstUseSentinel"
 
       - name: Docker login
         run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login --username ${{ secrets.DOCKER_USERNAME }} --password-stdin
