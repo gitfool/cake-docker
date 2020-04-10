@@ -3,7 +3,6 @@
 Build.SetParameters
 (
     title: "cake-docker",
-    configuration: "Release",
 
     defaultLog: true,
 
