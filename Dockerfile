@@ -27,7 +27,13 @@ RUN curl -fsSL https://github.com/docker/compose/releases/download/1.25.5/docker
 # Install git ppa
 RUN APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=true apt-key adv --keyserver keyserver.ubuntu.com --recv-key E1DD270288B4E6030699E45FA1715D88E1DF1F24 2>&1 \
     && echo "deb http://ppa.launchpad.net/git-core/ppa/ubuntu focal main" | tee /etc/apt/sources.list.d/git.list \
-    && apt-get update -y \
+    && apt-get update \
     && apt-get install --no-install-recommends -y git \
     && rm -rf /var/lib/apt/lists/* \
     && git --version
+
+# Install zstd
+RUN apt-get update \
+    && apt-get install --no-install-recommends -y zstd \
+    && rm -rf /var/lib/apt/lists/* \
+    && zstd --version
