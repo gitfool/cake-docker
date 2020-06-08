@@ -15,7 +15,7 @@ RUN dotnet tool install Cake.Tool --version 0.38.1 --tool-path /cake \
 ENV CAKE_SETTINGS_SHOWPROCESSCOMMANDLINE=true
 
 # Install Docker client
-RUN curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-19.03.10.tgz | tar -zxO docker/docker > /usr/local/bin/docker \
+RUN curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-19.03.11.tgz | tar -zxO docker/docker > /usr/local/bin/docker \
     && chmod +x /usr/local/bin/docker \
     && docker --version
 
