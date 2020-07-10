@@ -49,5 +49,3 @@ RUN groupadd --gid 1000 user \
     && echo "user ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/user \
     && chmod 0440 /etc/sudoers.d/user \
     && echo "set disable_coredump false" >> /etc/sudo.conf # https://github.com/sudo-project/sudo/issues/42
-
-USER user
