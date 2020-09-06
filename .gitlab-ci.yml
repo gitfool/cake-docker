@@ -1,0 +1,22 @@
+workflow:
+  rules:
+    - if: '$CI_COMMIT_BRANCH && $CI_COMMIT_BRANCH !~ /^dependabot/'
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"'
+    - when: never
+
+variables:
+  CAKE_SETTINGS_SHOWPROCESSCOMMANDLINE: "true"
+  DOTNET_CLI_TELEMETRY_OPTOUT: "true"
+  DOTNET_NOLOGO: "true"
+  DOTNET_ROLL_FORWARD_ON_NO_CANDIDATE_FX: 2
+  GIT_DEPTH: 0
+
+stages: [ Build ]
+
+Linux:
+  stage: Build
+  tags: [ shared, linux ]
+  script:
+    - curl -fsSL https://dot.net/v1/dotnet-install.sh | bash -s -- --version 3.1.401
+    - export DOTNET_ROOT=$HOME/.dotnet && export PATH=$DOTNET_ROOT:$PATH
+    - dotnet tool restore && dotnet cake --bootstrap --verbosity=verbose && dotnet cake --verbosity=verbose --target=build
