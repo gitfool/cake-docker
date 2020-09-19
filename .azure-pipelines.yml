@@ -25,7 +25,7 @@ jobs:
 
       - task: DotNetCoreInstaller@1
         inputs:
-          version: 3.1.402
+          version: 5.0.100-rc.1.20452.10
         displayName: Install dotnet
 
       - task: Docker@2
