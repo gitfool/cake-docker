@@ -23,16 +23,16 @@ jobs:
       - checkout: self
         displayName: Checkout source
 
-      - task: DotNetCoreInstaller@1
+      - task: UseDotNet@2
+        displayName: Install dotnet
         inputs:
           version: 5.0.100-rc.1.20452.10
-        displayName: Install dotnet
 
       - task: Docker@2
+        displayName: Docker login
         inputs:
           command: login
           containerRegistry: DockerHub
-        displayName: Docker login
 
       - bash: dotnet tool restore && dotnet cake --bootstrap && dotnet cake --verbosity=verbose --target=build
         displayName: Cake build
