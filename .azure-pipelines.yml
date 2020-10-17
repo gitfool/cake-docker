@@ -24,7 +24,7 @@ jobs:
       - task: UseDotNet@2
         displayName: Install dotnet
         inputs:
-          version: 5.0.100-rc.1.20452.10
+          version: 5.0.100-rc.2.20479.15
 
       - bash: dotnet tool restore && dotnet cake --bootstrap && dotnet cake --verbosity=verbose --target=build
         displayName: Cake build
