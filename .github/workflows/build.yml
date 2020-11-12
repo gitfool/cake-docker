@@ -35,4 +35,4 @@ jobs:
           password: ${{ secrets.DOCKER_TOKEN }}
 
       - name: Cake build
-        run: dotnet tool restore && dotnet cake --bootstrap --verbosity=verbose && dotnet cake --verbosity=verbose --target=build --publish=true
+        run: dotnet tool restore && dotnet cake --verbosity=verbose --target=build --publish=true

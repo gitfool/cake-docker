@@ -10,6 +10,7 @@ Build.SetParameters
     runPublishToDocker: true,
 
     dockerPushLatest: true,
+    dockerPushSkipDuplicate: true,
 
     dockerImages: new[] { new DockerImage { Repository = "dockfool/cake-docker" } }
 );

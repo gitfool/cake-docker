@@ -26,5 +26,5 @@ jobs:
         inputs:
           version: 5.0.100
 
-      - bash: dotnet tool restore && dotnet cake --bootstrap && dotnet cake --verbosity=verbose --target=build
+      - bash: dotnet tool restore && dotnet cake --verbosity=verbose --target=build
         displayName: Cake build
