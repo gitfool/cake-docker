@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0.100-focal
 
 ENV DOTNET_CLI_TELEMETRY_OPTOUT=true \
     DOTNET_NOLOGO=true \
-    DOTNET_ROLL_FORWARD_ON_NO_CANDIDATE_FX=2
+    DOTNET_ROLL_FORWARD=Major
 
 # Install Cake tool
 RUN dotnet tool install Cake.Tool --version 1.0.0-rc0001 --tool-path /cake \
