@@ -5,7 +5,7 @@ ENV DOTNET_CLI_TELEMETRY_OPTOUT=true \
     DOTNET_ROLL_FORWARD=Major
 
 # Install Cake tool
-RUN dotnet tool install Cake.Tool --version 1.0.0-rc0001 --tool-path /cake \
+RUN dotnet tool install Cake.Tool --version 1.0.0-rc0002 --tool-path /cake \
     && dotnet nuget locals all --clear \
     && chmod 755 /cake/dotnet-cake \
     && ln -s /cake/dotnet-cake /usr/local/bin/cake \
