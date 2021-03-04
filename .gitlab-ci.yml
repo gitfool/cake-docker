@@ -22,6 +22,6 @@ Linux:
   tags: [ shared, linux ]
   script:
     - curl -fsSL https://get.docker.com/ | bash -s
-    - curl -fsSL https://dot.net/v1/dotnet-install.sh | bash -s -- --version 5.0.103
+    - curl -fsSL https://dot.net/v1/dotnet-install.sh | bash -s -- --version 5.0.200
     - export DOTNET_ROOT=$HOME/.dotnet && export PATH=$DOTNET_ROOT:$PATH
     - dotnet tool restore && dotnet cake --verbosity=verbose --target=build
