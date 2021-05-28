@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0.203-focal
+FROM mcr.microsoft.com/dotnet/sdk:5.0.300-focal
 
 ENV DOTNET_CLI_TELEMETRY_OPTOUT=true \
     DOTNET_NOLOGO=true \
