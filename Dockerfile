@@ -12,7 +12,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Cake tool
-RUN version=1.1.0 \
+RUN version=1.2.0 \
     && dotnet tool install cake.tool --version $version --tool-path /cake \
     && dotnet nuget locals all --clear \
     && chmod 755 /cake/dotnet-cake \
