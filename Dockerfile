@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0.401-focal
+FROM mcr.microsoft.com/dotnet/sdk:5.0.402-focal
 
 # Configure .NET SDK
 ENV DOTNET_CLI_TELEMETRY_OPTOUT=true \
