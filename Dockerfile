@@ -23,7 +23,7 @@ RUN version=1.3.0 \
 ENV CAKE_SETTINGS_SHOWPROCESSCOMMANDLINE=true
 
 # Install Docker client
-RUN version=20.10.8 \
+RUN version=20.10.9 \
     && curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-$version.tgz -o docker.tgz \
     && tar -xzf docker.tgz --directory /usr/local/bin --no-same-owner --strip=1 docker/docker \
     && rm -f docker.tgz \
