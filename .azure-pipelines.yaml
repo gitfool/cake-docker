@@ -1,11 +1,9 @@
 trigger:
   branches:
-    include:
-      - master
+    include: [ master ]
 pr:
   branches:
-    include:
-      - master
+    include: [ master ]
 
 variables:
   CAKE_SETTINGS_SHOWPROCESSCOMMANDLINE: true
@@ -14,12 +12,13 @@ variables:
   DOTNET_ROLL_FORWARD: Major
 
 jobs:
-  - job: Linux
+  - job: Build
     pool:
       vmImage: ubuntu-latest
     steps:
       - checkout: self
         displayName: Checkout source
+        submodules: true
 
       - task: UseDotNet@2
         displayName: Install dotnet

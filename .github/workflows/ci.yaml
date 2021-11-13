@@ -1,11 +1,9 @@
-name: Build
+name: CI
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
   pull_request:
-    branches:
-      - master
+    branches: [ master ]
   workflow_dispatch:
 
 env:
@@ -15,13 +13,14 @@ env:
   DOTNET_ROLL_FORWARD: Major
 
 jobs:
-  Linux:
+  Build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source
         uses: actions/checkout@v2.4.0
         with:
           fetch-depth: 0
+          submodules: true
 
       - name: Install dotnet
         uses: actions/setup-dotnet@v1.8.2

@@ -11,6 +11,7 @@ variables:
   DOTNET_NOLOGO: "true"
   DOTNET_ROLL_FORWARD: Major
   GIT_DEPTH: 0
+  GIT_SUBMODULE_STRATEGY: recursive
 
 services:
   - docker:dind
