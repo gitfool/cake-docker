@@ -1,7 +1,7 @@
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
-* text=auto eol=lf
+* text=auto
 
 ###############################################################################
 # Set the merge driver for project and solution files
@@ -50,6 +50,9 @@
 #*.props     merge=binary
 #*.filters   merge=binary
 #*.vcxitems  merge=binary
+
+# Custom
+*.sh         text eol=lf
 
 # Linguist
 *.cake       linguist-language=C#
