@@ -30,8 +30,8 @@ RUN version=20.10.11 \
     && docker --version
 
 # Install docker-compose
-RUN version=1.29.2 \
-    && curl -fsSL https://github.com/docker/compose/releases/download/$version/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose \
+RUN version=2.2.0 \
+    && curl -fsSL https://github.com/docker/compose/releases/download/v$version/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose \
     && chmod +x /usr/local/bin/docker-compose \
     && docker-compose --version
 
