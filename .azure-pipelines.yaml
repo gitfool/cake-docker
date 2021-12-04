@@ -12,7 +12,7 @@ variables:
   DOTNET_ROLL_FORWARD: Major
 
 jobs:
-  - job: Build
+  - job: build
     pool:
       vmImage: ubuntu-latest
     steps:

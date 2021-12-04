@@ -1,4 +1,4 @@
-name: CI
+name: ci
 on:
   push:
     branches: [ master ]
@@ -13,7 +13,7 @@ env:
   DOTNET_ROLL_FORWARD: Major
 
 jobs:
-  Build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source

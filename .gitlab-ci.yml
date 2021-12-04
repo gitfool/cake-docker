@@ -16,10 +16,10 @@ variables:
 services:
   - docker:dind
 
-stages: [ Build ]
+stages: [ build ]
 
-Linux:
-  stage: Build
+linux:
+  stage: build
   tags: [ shared, linux ]
   script:
     - curl -fsSL https://get.docker.com/ | bash -s
