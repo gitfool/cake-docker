@@ -23,6 +23,6 @@ linux:
   tags: [ shared, linux ]
   script:
     - curl -fsSL https://get.docker.com/ | bash -s
-    - curl -fsSL https://dot.net/v1/dotnet-install.sh | bash -s -- --version 6.0.100
+    - curl -fsSL https://dot.net/v1/dotnet-install.sh | bash -s -- --version 6.0.101
     - export DOTNET_ROOT=$HOME/.dotnet && export PATH=$DOTNET_ROOT:$PATH
     - dotnet tool restore && dotnet cake --verbosity=verbose
