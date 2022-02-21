@@ -1,9 +1,13 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0.200-focal
+FROM mcr.microsoft.com/dotnet/sdk:6.0.101-focal
 
-# Configure .NET SDK
+LABEL org.opencontainers.image.source=https://github.com/gitfool/cake-docker
+
+# Configure dotnet sdk
 ENV DOTNET_CLI_TELEMETRY_OPTOUT=true \
     DOTNET_NOLOGO=true \
     DOTNET_ROLL_FORWARD=Major
+
+RUN dotnet --info
 
 # Install packages
 RUN apt-get update \
@@ -11,18 +15,19 @@ RUN apt-get update \
     && mkdir -p /etc/bash_completion.d \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Cake tool
+# Install cake tool
+# renovate: datasource=nuget depName=cake.tool
 RUN version=2.0.0 \
     && dotnet tool install cake.tool --version $version --tool-path /tools \
     && dotnet nuget locals all --clear \
     && chmod 755 /tools/dotnet-cake \
     && ln -s /tools/dotnet-cake /usr/local/bin/cake \
-    && dotnet --info \
     && cake --info
 
 ENV CAKE_SETTINGS_SHOWPROCESSCOMMANDLINE=true
 
-# Install Docker client
+# Install docker cli
+# renovate: datasource=github-releases depName=docker lookupName=moby/moby
 RUN version=20.10.11 \
     && curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-$version.tgz -o docker.tgz \
     && tar -xzf docker.tgz --directory /usr/local/bin --no-same-owner --strip=1 docker/docker \
@@ -30,6 +35,7 @@ RUN version=20.10.11 \
     && docker --version
 
 # Install docker-compose
+# renovate: datasource=github-releases depName=docker-compose lookupName=docker/compose
 RUN version=2.2.2 \
     && curl -fsSL https://github.com/docker/compose/releases/download/v$version/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose \
     && chmod +x /usr/local/bin/docker-compose \
