@@ -27,7 +27,7 @@ RUN version=2.0.0 \
 ENV CAKE_SETTINGS_SHOWPROCESSCOMMANDLINE=true
 
 # Install docker cli
-# renovate: datasource=github-releases depName=docker lookupName=moby/moby
+# renovate: datasource=github-releases depName=docker packageName=moby/moby
 RUN version=20.10.11 \
     && curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-$version.tgz -o docker.tgz \
     && tar -xzf docker.tgz --directory /usr/local/bin --no-same-owner --strip=1 docker/docker \
@@ -35,7 +35,7 @@ RUN version=20.10.11 \
     && docker --version
 
 # Install docker-compose
-# renovate: datasource=github-releases depName=docker-compose lookupName=docker/compose
+# renovate: datasource=github-releases depName=docker-compose packageName=docker/compose
 RUN version=2.2.2 \
     && curl -fsSL https://github.com/docker/compose/releases/download/v$version/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose \
     && chmod +x /usr/local/bin/docker-compose \
