@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0.101-focal
+FROM mcr.microsoft.com/dotnet/sdk:6.0.201-focal
 
 LABEL org.opencontainers.image.source=https://github.com/gitfool/cake-docker
 
@@ -17,7 +17,7 @@ RUN apt-get update \
 
 # Install cake tool
 # renovate: datasource=nuget depName=cake.tool
-RUN version=2.0.0 \
+RUN version=2.1.0 \
     && dotnet tool install cake.tool --version $version --tool-path /tools \
     && dotnet nuget locals all --clear \
     && chmod 755 /tools/dotnet-cake \
@@ -28,7 +28,7 @@ ENV CAKE_SETTINGS_SHOWPROCESSCOMMANDLINE=true
 
 # Install docker cli
 # renovate: datasource=github-releases depName=docker packageName=moby/moby
-RUN version=20.10.11 \
+RUN version=20.10.13 \
     && curl -fsSL https://download.docker.com/linux/static/stable/x86_64/docker-$version.tgz -o docker.tgz \
     && tar -xzf docker.tgz --directory /usr/local/bin --no-same-owner --strip=1 docker/docker \
     && rm -f docker.tgz \
@@ -36,7 +36,7 @@ RUN version=20.10.11 \
 
 # Install docker-compose
 # renovate: datasource=github-releases depName=docker-compose packageName=docker/compose
-RUN version=2.2.2 \
+RUN version=2.3.3 \
     && curl -fsSL https://github.com/docker/compose/releases/download/v$version/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose \
     && chmod +x /usr/local/bin/docker-compose \
     && docker-compose --version
