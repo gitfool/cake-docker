@@ -24,6 +24,6 @@ linux:
   script:
     - curl -fsSL https://get.docker.com/ | bash -s
     # renovate: datasource=docker depName=dotnet-sdk packageName=mcr.microsoft.com/dotnet/sdk
-    - curl -fsSL https://dot.net/v1/dotnet-install.sh | bash -s -- --version 6.0.101
+    - curl -fsSL https://dot.net/v1/dotnet-install.sh | bash -s -- --version 6.0.201
     - export DOTNET_ROOT=$HOME/.dotnet && export PATH=$DOTNET_ROOT:$PATH
     - dotnet tool restore && dotnet cake --verbosity=verbose
