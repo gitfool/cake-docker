@@ -35,5 +35,8 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
 
+      - name: Export runtime
+        uses: crazy-max/ghaction-github-runtime@v1.0.0
+
       - name: Cake build
         run: dotnet tool restore && dotnet cake --verbosity=verbose --publish=true
