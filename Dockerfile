@@ -11,9 +11,13 @@ RUN dotnet --info
 
 # Install packages
 RUN apt-get update \
-    && apt-get install --no-install-recommends -y bash-completion ca-certificates curl unzip vim zip zstd \
-    && mkdir -p /etc/bash_completion.d \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get install --no-install-recommends -y bash-completion ca-certificates curl gnupg2 sudo unzip vim zip zstd \
+    && APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=true apt-key adv --keyserver keyserver.ubuntu.com --recv-key E1DD270288B4E6030699E45FA1715D88E1DF1F24 2>&1 \
+    && echo "deb http://ppa.launchpad.net/git-core/ppa/ubuntu focal main" | tee /etc/apt/sources.list.d/git.list \
+    && apt-get update \
+    && apt-get install --no-install-recommends -y git \
+    && rm -rf /var/lib/apt/lists/* \
+    && mkdir -p /etc/bash_completion.d
 
 # Install cake tool
 # renovate: datasource=nuget depName=cake.tool
@@ -41,23 +45,10 @@ RUN version=2.3.4 \
     && chmod +x /usr/local/bin/docker-compose \
     && docker-compose --version
 
-# Install git ppa
-RUN apt-get update \
-    && apt-get install --no-install-recommends -y gnupg2 \
-    && APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=true apt-key adv --keyserver keyserver.ubuntu.com --recv-key E1DD270288B4E6030699E45FA1715D88E1DF1F24 2>&1 \
-    && echo "deb http://ppa.launchpad.net/git-core/ppa/ubuntu focal main" | tee /etc/apt/sources.list.d/git.list \
-    && apt-get update \
-    && apt-get install --no-install-recommends -y git \
-    && rm -rf /var/lib/apt/lists/* \
-    && git --version
-
 # Add non-root user
 RUN groupadd --gid 1000 user \
     && useradd --uid 1000 --gid 1000 --shell /bin/bash -m user \
     && groupadd docker \
     && usermod --append --groups docker user \
-    && apt-get update \
-    && apt-get install --no-install-recommends -y sudo \
-    && rm -rf /var/lib/apt/lists/* \
     && echo "user ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/user \
     && chmod 0440 /etc/sudoers.d/user
