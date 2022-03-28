@@ -52,3 +52,11 @@ RUN groupadd --gid 1000 user \
     && usermod --append --groups docker user \
     && echo "user ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/user \
     && chmod 0440 /etc/sudoers.d/user
+
+USER user
+
+RUN echo "alias l='ls -aF'" >> ~/.bash_aliases \
+    && echo "alias ll='ls -ahlF'" >> ~/.bash_aliases \
+    && echo "alias ls='ls --color=auto --group-directories-first'" >> ~/.bash_aliases
+
+USER root
