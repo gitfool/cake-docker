@@ -40,7 +40,7 @@ RUN version=20.10.14 \
 
 # Install docker-compose
 # renovate: datasource=github-releases depName=docker-compose packageName=docker/compose
-RUN version=2.3.4 \
+RUN version=2.4.0 \
     && curl -fsSL https://github.com/docker/compose/releases/download/v$version/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose \
     && chmod +x /usr/local/bin/docker-compose \
     && docker-compose --version
