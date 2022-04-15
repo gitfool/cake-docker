@@ -21,14 +21,15 @@ RUN apt-get update \
 
 # Install cake tool
 # renovate: datasource=nuget depName=cake.tool
-RUN version=2.1.0 \
+RUN version=2.2.0 \
     && dotnet tool install cake.tool --version $version --tool-path /tools \
     && dotnet nuget locals all --clear \
     && chmod 755 /tools/dotnet-cake \
     && ln -s /tools/dotnet-cake /usr/local/bin/cake \
     && cake --info
 
-ENV CAKE_SETTINGS_SHOWPROCESSCOMMANDLINE=true
+ENV CAKE_SETTINGS_ENABLESCRIPTCACHE=true \
+    CAKE_SETTINGS_SHOWPROCESSCOMMANDLINE=true
 
 # Install docker cli
 # renovate: datasource=github-releases depName=docker packageName=moby/moby
