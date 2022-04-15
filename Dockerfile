@@ -21,7 +21,7 @@ RUN apt-get update \
 
 # Install cake tool
 # renovate: datasource=nuget depName=cake.tool
-RUN version=2.1.0 \
+RUN version=2.2.0 \
     && dotnet tool install cake.tool --version $version --tool-path /tools \
     && dotnet nuget locals all --clear \
     && chmod 755 /tools/dotnet-cake \
