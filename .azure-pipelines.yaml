@@ -19,7 +19,7 @@ jobs:
     steps:
       - checkout: self
         displayName: Checkout source
-        submodules: true
+        submodules: recursive
 
       - task: UseDotNet@2
         displayName: Install dotnet
