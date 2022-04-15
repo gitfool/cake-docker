@@ -28,7 +28,8 @@ RUN version=2.2.0 \
     && ln -s /tools/dotnet-cake /usr/local/bin/cake \
     && cake --info
 
-ENV CAKE_SETTINGS_SHOWPROCESSCOMMANDLINE=true
+ENV CAKE_SETTINGS_ENABLESCRIPTCACHE=true \
+    CAKE_SETTINGS_SHOWPROCESSCOMMANDLINE=true
 
 # Install docker cli
 # renovate: datasource=github-releases depName=docker packageName=moby/moby
