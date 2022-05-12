@@ -24,10 +24,10 @@ jobs:
           submodules: recursive
 
       - name: Install dotnet
-        uses: actions/setup-dotnet@v2.0.0
+        uses: actions/setup-dotnet@v2.1.0
         with:
           # renovate: datasource=docker depName=dotnet-sdk packageName=mcr.microsoft.com/dotnet/sdk
-          dotnet-version: 6.0.202
+          dotnet-version: 6.0.300
 
       - name: Docker login
         if: github.event_name != 'pull_request'
