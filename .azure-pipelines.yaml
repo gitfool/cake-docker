@@ -25,7 +25,7 @@ jobs:
         displayName: Install dotnet
         inputs:
           # renovate: datasource=docker depName=dotnet-sdk packageName=mcr.microsoft.com/dotnet/sdk
-          version: 6.0.300
+          version: 6.0.301
 
       - bash: dotnet tool restore && dotnet cake --verbosity=verbose
         displayName: Cake build

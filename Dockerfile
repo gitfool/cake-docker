@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0.300-focal
+FROM mcr.microsoft.com/dotnet/sdk:6.0.301-focal
 
 LABEL org.opencontainers.image.source=https://github.com/gitfool/cake-docker
 
