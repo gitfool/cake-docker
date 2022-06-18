@@ -59,3 +59,5 @@ USER user
 RUN echo "alias l='ls -aF'" >> ~/.bash_aliases \
     && echo "alias ll='ls -ahlF'" >> ~/.bash_aliases \
     && echo "alias ls='ls --color=auto --group-directories-first'" >> ~/.bash_aliases
+
+USER root
