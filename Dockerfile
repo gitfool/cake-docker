@@ -54,8 +54,8 @@ RUN <<EOF
     docker --version
 EOF
 
-# Install docker buildx plugin
-# renovate: datasource=github-releases depName=buildx packageName=docker/buildx
+# Install docker buildx plugin; https://docs.docker.com/buildx/working-with-buildx/#manual-download
+# renovate: datasource=github-releases depName=docker-buildx packageName=docker/buildx
 RUN <<EOF
     set -ex
     [ "$TARGETARCH" = "amd64" ] && arch="amd64" || arch="arm64"
@@ -65,13 +65,24 @@ RUN <<EOF
     docker buildx version
 EOF
 
-# Install docker-compose
+# Install docker compose plugin; https://docs.docker.com/compose/install/compose-plugin/#install-the-plugin-manually
 # renovate: datasource=github-releases depName=docker-compose packageName=docker/compose
 RUN <<EOF
     set -ex
     [ "$TARGETARCH" = "amd64" ] && arch="x86_64" || arch="aarch64"
     version=2.6.0
-    curl -fsSL https://github.com/docker/compose/releases/download/v$version/docker-compose-linux-$arch -o /usr/local/bin/docker-compose
+    curl -fsSL https://github.com/docker/compose/releases/download/v$version/docker-compose-linux-$arch -o /usr/local/lib/docker/cli-plugins/docker-compose
+    chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+    docker compose version
+EOF
+
+# Install docker compose switch; https://github.com/docker/compose-switch#installation
+# renovate: datasource=github-releases depName=docker-compose-switch packageName=docker/compose-switch
+RUN <<EOF
+    set -ex
+    [ "$TARGETARCH" = "amd64" ] && arch="amd64" || arch="arm64"
+    version=1.0.5
+    curl -fsSL https://github.com/docker/compose-switch/releases/download/v$version/docker-compose-linux-$arch -o /usr/local/bin/docker-compose
     chmod +x /usr/local/bin/docker-compose
     docker-compose --version
 EOF
