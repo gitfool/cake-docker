@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM mcr.microsoft.com/dotnet/sdk:6.0.301-focal
+FROM mcr.microsoft.com/dotnet/sdk:6.0.301-jammy
 
 LABEL org.opencontainers.image.source=https://github.com/gitfool/cake-docker
 
@@ -14,9 +14,9 @@ RUN dotnet --info
 RUN <<EOF
     set -ex
     apt-get update
-    apt-get install --no-install-recommends -y bash-completion ca-certificates curl gnupg2 sudo unzip vim zip zstd
-    APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=true apt-key adv --keyserver keyserver.ubuntu.com --recv-key E1DD270288B4E6030699E45FA1715D88E1DF1F24 2>&1
-    echo "deb http://ppa.launchpad.net/git-core/ppa/ubuntu focal main" | tee /etc/apt/sources.list.d/git.list
+    apt-get install --no-install-recommends -y bash-completion ca-certificates curl gnupg sudo unzip vim zip zstd
+    curl -fsSL 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xe1dd270288b4e6030699e45fa1715d88e1df1f24' | gpg --dearmor -o /usr/share/keyrings/git-ppa.gpg
+    echo 'deb [signed-by=/usr/share/keyrings/git-ppa.gpg] https://ppa.launchpadcontent.net/git-core/ppa/ubuntu jammy main' | tee /etc/apt/sources.list.d/git-ppa.list
     apt-get update
     apt-get install --no-install-recommends -y git
     rm -rf /var/lib/apt/lists/*
