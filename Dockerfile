@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM mcr.microsoft.com/dotnet/sdk:6.0.400-jammy
+FROM mcr.microsoft.com/dotnet/sdk:6.0.402-jammy
 
 LABEL org.opencontainers.image.source=https://github.com/gitfool/cake-docker
 
@@ -30,7 +30,7 @@ EOF
 # renovate: datasource=nuget depName=cake.tool
 RUN <<EOF
     set -ex
-    version=2.2.0
+    version=2.3.0
     dotnet tool install cake.tool --version $version --tool-path /tools
     dotnet nuget locals all --clear
     chmod 755 /tools/dotnet-cake
@@ -46,7 +46,7 @@ ENV CAKE_SETTINGS_ENABLESCRIPTCACHE=true \
 RUN <<EOF
     set -ex
     [ "$TARGETARCH" = "amd64" ] && arch="x86_64" || arch="aarch64"
-    version=20.10.18
+    version=20.10.19
     curl -fsSL https://download.docker.com/linux/static/stable/$arch/docker-$version.tgz -o docker.tgz
     tar -xzf docker.tgz --directory /usr/local/bin --no-same-owner --strip=1 docker/docker
     rm -f docker.tgz
@@ -70,7 +70,7 @@ EOF
 RUN <<EOF
     set -ex
     [ "$TARGETARCH" = "amd64" ] && arch="x86_64" || arch="aarch64"
-    version=2.10.2
+    version=2.11.2
     curl -fsSL https://github.com/docker/compose/releases/download/v$version/docker-compose-linux-$arch -o /usr/local/lib/docker/cli-plugins/docker-compose
     chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
     docker compose version
