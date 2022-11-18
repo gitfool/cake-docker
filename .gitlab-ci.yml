@@ -19,7 +19,7 @@ services:
 
 stages: [ build ]
 
-linux:
+build:
   stage: build
   tags: [ shared, linux ]
   script:
