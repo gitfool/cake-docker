@@ -38,8 +38,8 @@ RUN <<EOF
     cake --info
 EOF
 
-ENV CAKE_SETTINGS_ENABLESCRIPTCACHE=true \
-    CAKE_SETTINGS_SHOWPROCESSCOMMANDLINE=true
+ENV Cake_Settings_EnableScriptCache=true \
+    Cake_Settings_ShowProcessCommandLine=true
 
 # Install docker cli
 # renovate: datasource=github-releases depName=docker packageName=moby/moby
