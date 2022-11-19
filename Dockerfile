@@ -30,7 +30,7 @@ EOF
 # renovate: datasource=nuget depName=cake.tool
 RUN <<EOF
     set -ex
-    version=2.3.0
+    version=3.0.0
     dotnet tool install cake.tool --version $version --tool-path /tools
     dotnet nuget locals all --clear
     chmod 755 /tools/dotnet-cake
@@ -38,8 +38,8 @@ RUN <<EOF
     cake --info
 EOF
 
-ENV CAKE_SETTINGS_ENABLESCRIPTCACHE=true \
-    CAKE_SETTINGS_SHOWPROCESSCOMMANDLINE=true
+ENV Cake_Settings_EnableScriptCache=true \
+    Cake_Settings_ShowProcessCommandLine=true
 
 # Install docker cli
 # renovate: datasource=github-releases depName=docker packageName=moby/moby
