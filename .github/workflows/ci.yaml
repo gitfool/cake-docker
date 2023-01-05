@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@v3.3.0
         with:
           fetch-depth: 0
           submodules: recursive
@@ -31,7 +31,7 @@ jobs:
         uses: actions/setup-dotnet@v3.0.3
         with:
           # renovate: datasource=dotnet depName=dotnet-sdk
-          dotnet-version: 7.0.100
+          dotnet-version: 7.0.101
 
       - name: Docker login
         if: github.event_name != 'pull_request'
