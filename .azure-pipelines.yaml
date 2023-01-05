@@ -25,7 +25,7 @@ jobs:
         displayName: Install dotnet
         inputs:
           # renovate: datasource=dotnet depName=dotnet-sdk
-          version: 7.0.100
+          version: 7.0.101
 
       - bash: dotnet tool restore && dotnet cake --verbosity=verbose
         displayName: Cake build
