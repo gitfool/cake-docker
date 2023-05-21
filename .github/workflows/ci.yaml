@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source
-        uses: actions/checkout@v3.3.0
+        uses: actions/checkout@v3.5.2
         with:
           fetch-depth: 0
           submodules: recursive
@@ -31,7 +31,7 @@ jobs:
         uses: actions/setup-dotnet@v3.0.3
         with:
           # renovate: datasource=dotnet depName=dotnet-sdk
-          dotnet-version: 7.0.102
+          dotnet-version: 7.0.302
 
       - name: Docker login
         if: github.event_name != 'pull_request'
@@ -46,10 +46,10 @@ jobs:
           platforms: arm64
 
       - name: Setup buildx
-        uses: docker/setup-buildx-action@v2.2.1
+        uses: docker/setup-buildx-action@v2.5.0
 
       - name: Export runtime
-        uses: crazy-max/ghaction-github-runtime@v2.1.0
+        uses: crazy-max/ghaction-github-runtime@v2.2.0
 
       - name: Cake build
         run: dotnet tool restore && dotnet cake --verbosity=verbose --publish=true
