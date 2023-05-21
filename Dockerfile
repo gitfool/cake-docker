@@ -51,6 +51,7 @@ RUN <<EOF
     tar -xzf docker.tgz --directory /usr/local/bin --no-same-owner --strip=1 docker/docker
     rm -f docker.tgz
     mkdir -p /usr/local/lib/docker/cli-plugins
+    docker completion bash > /etc/bash_completion.d/docker
     docker --version
 EOF
 
