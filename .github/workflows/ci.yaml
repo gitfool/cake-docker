@@ -28,7 +28,7 @@ jobs:
           submodules: recursive
 
       - name: Install dotnet
-        uses: actions/setup-dotnet@v3.0.3
+        uses: actions/setup-dotnet@v3.1.0
         with:
           # renovate: datasource=dotnet depName=dotnet-sdk
           dotnet-version: 7.0.302
