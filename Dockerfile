@@ -21,7 +21,7 @@ RUN <<EOF
     curl -fsSL 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xe1dd270288b4e6030699e45fa1715d88e1df1f24' | gpg --dearmor -o /usr/share/keyrings/git-ppa.gpg
     echo 'deb [signed-by=/usr/share/keyrings/git-ppa.gpg] https://ppa.launchpadcontent.net/git-core/ppa/ubuntu jammy main' | tee /etc/apt/sources.list.d/git-ppa.list
     apt-get update
-    apt-get install --no-install-recommends -y git
+    apt-get install --no-install-recommends -y git git-lfs
     rm -rf /var/lib/apt/lists/*
     mkdir -p /etc/bash_completion.d
 EOF
