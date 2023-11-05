@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM mcr.microsoft.com/dotnet/sdk:7.0.402-jammy
+FROM mcr.microsoft.com/dotnet/sdk:7.0.403-jammy
 
 LABEL org.opencontainers.image.source=https://github.com/gitfool/cake-docker
 
@@ -21,7 +21,7 @@ RUN <<EOF
     curl -fsSL 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xe1dd270288b4e6030699e45fa1715d88e1df1f24' | gpg --dearmor -o /usr/share/keyrings/git-ppa.gpg
     echo 'deb [signed-by=/usr/share/keyrings/git-ppa.gpg] https://ppa.launchpadcontent.net/git-core/ppa/ubuntu jammy main' | tee /etc/apt/sources.list.d/git-ppa.list
     apt-get update
-    apt-get install --no-install-recommends -y git
+    apt-get install --no-install-recommends -y git git-lfs
     rm -rf /var/lib/apt/lists/*
     mkdir -p /etc/bash_completion.d
 EOF
@@ -46,7 +46,7 @@ ENV Cake_Settings_EnableScriptCache=true \
 RUN <<EOF
     set -ex
     [ "$TARGETARCH" = "amd64" ] && arch="x86_64" || arch="aarch64"
-    version=24.0.6
+    version=24.0.7
     curl -fsSL https://download.docker.com/linux/static/stable/$arch/docker-$version.tgz -o docker.tgz
     tar -xzf docker.tgz --directory /usr/local/bin --no-same-owner --strip=1 docker/docker
     rm -f docker.tgz
