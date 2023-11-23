@@ -32,7 +32,7 @@ jobs:
         uses: actions/setup-dotnet@v3.2.0
         with:
           # renovate: datasource=dotnet depName=dotnet-sdk
-          dotnet-version: 7.0.403
+          dotnet-version: 7.0.404
 
       - name: Docker login
         if: github.event_name != 'pull_request'
