@@ -30,7 +30,7 @@ EOF
 # renovate: datasource=nuget depName=cake.tool
 RUN <<EOF
     set -ex
-    version=3.2.0
+    version=4.0.0
     dotnet tool install cake.tool --version $version --tool-path /tools
     dotnet nuget locals all --clear
     chmod 755 /tools/dotnet-cake
