@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM mcr.microsoft.com/dotnet/sdk:8.0.203-jammy
+FROM mcr.microsoft.com/dotnet/sdk:8.0.204-jammy
 
 LABEL org.opencontainers.image.source=https://github.com/gitfool/cake-docker
 
@@ -46,7 +46,7 @@ ENV Cake_Settings_EnableScriptCache=true \
 RUN <<EOF
     set -ex
     [ "$TARGETARCH" = "amd64" ] && arch="x86_64" || arch="aarch64"
-    version=25.0.4
+    version=25.0.5
     curl -fsSL https://download.docker.com/linux/static/stable/$arch/docker-$version.tgz -o docker.tgz
     tar -xzf docker.tgz --directory /usr/local/bin --no-same-owner --strip=1 docker/docker
     rm -f docker.tgz
@@ -71,7 +71,7 @@ EOF
 RUN <<EOF
     set -ex
     [ "$TARGETARCH" = "amd64" ] && arch="x86_64" || arch="aarch64"
-    version=2.25.0
+    version=2.26.1
     curl -fsSL https://github.com/docker/compose/releases/download/v$version/docker-compose-linux-$arch -o /usr/local/lib/docker/cli-plugins/docker-compose
     chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
     docker compose version
