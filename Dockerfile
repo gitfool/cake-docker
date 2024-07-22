@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM mcr.microsoft.com/dotnet/sdk:8.0.302-jammy
+FROM mcr.microsoft.com/dotnet/sdk:8.0.303-jammy
 
 LABEL org.opencontainers.image.source=https://github.com/gitfool/cake-docker
 
@@ -60,7 +60,7 @@ EOF
 RUN <<EOF
     set -ex
     [ "$TARGETARCH" = "amd64" ] && arch="amd64" || arch="arm64"
-    version=0.15.1
+    version=0.16.1
     curl -fsSL https://github.com/docker/buildx/releases/download/v$version/buildx-v$version.linux-$arch -o /usr/local/lib/docker/cli-plugins/docker-buildx
     chmod +x /usr/local/lib/docker/cli-plugins/docker-buildx
     docker buildx version
@@ -71,7 +71,7 @@ EOF
 RUN <<EOF
     set -ex
     [ "$TARGETARCH" = "amd64" ] && arch="x86_64" || arch="aarch64"
-    version=2.28.1
+    version=2.29.0
     curl -fsSL https://github.com/docker/compose/releases/download/v$version/docker-compose-linux-$arch -o /usr/local/lib/docker/cli-plugins/docker-compose
     chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
     docker compose version
