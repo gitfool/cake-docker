@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM mcr.microsoft.com/dotnet/sdk:8.0.402-jammy
+FROM mcr.microsoft.com/dotnet/sdk:8.0.403-jammy
 
 LABEL org.opencontainers.image.source=https://github.com/gitfool/cake-docker
 
