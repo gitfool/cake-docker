@@ -30,7 +30,7 @@ EOF
 # renovate: datasource=nuget depName=cake.tool
 RUN <<EOF
     set -ex
-    version=4.0.0
+    version=4.2.0
     dotnet tool install cake.tool --version $version --tool-path /tools
     dotnet nuget locals all --clear
     chmod 755 /tools/dotnet-cake
@@ -60,7 +60,7 @@ EOF
 RUN <<EOF
     set -ex
     [ "$TARGETARCH" = "amd64" ] && arch="amd64" || arch="arm64"
-    version=0.17.1
+    version=0.18.0
     curl -fsSL https://github.com/docker/buildx/releases/download/v$version/buildx-v$version.linux-$arch -o /usr/local/lib/docker/cli-plugins/docker-buildx
     chmod +x /usr/local/lib/docker/cli-plugins/docker-buildx
     docker buildx version
@@ -71,7 +71,7 @@ EOF
 RUN <<EOF
     set -ex
     [ "$TARGETARCH" = "amd64" ] && arch="x86_64" || arch="aarch64"
-    version=2.29.7
+    version=2.30.3
     curl -fsSL https://github.com/docker/compose/releases/download/v$version/docker-compose-linux-$arch -o /usr/local/lib/docker/cli-plugins/docker-compose
     chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
     docker compose version
