@@ -17,7 +17,7 @@ RUN <<EOF
     set -ex
     apt-get update
     apt-get install --no-install-recommends -y bash-completion ca-certificates curl gnupg lsb-release sudo unzip vim zip zstd
-    curl -fsSL 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xe1dd270288b4e6030699e45fa1715d88e1df1f24' | gpg --dearmor -o /usr/share/keyrings/git-ppa.gpg
+    curl -fsSL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xf911ab184317630c59970973e363c90f8f1b6217" | gpg --dearmor -o /usr/share/keyrings/git-ppa.gpg
     echo "deb [signed-by=/usr/share/keyrings/git-ppa.gpg] https://ppa.launchpadcontent.net/git-core/ppa/ubuntu $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/git-ppa.list
     apt-get update
     apt-get install --no-install-recommends -y git git-lfs
