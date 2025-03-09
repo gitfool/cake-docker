@@ -45,7 +45,7 @@ ENV Cake_Settings_EnableScriptCache=true \
 RUN <<EOF
     set -ex
     [ "$TARGETARCH" = "amd64" ] && arch="x86_64" || arch="aarch64"
-    version=27.5.1
+    version=28.0.1
     curl -fsSL https://download.docker.com/linux/static/stable/$arch/docker-$version.tgz -o docker.tgz
     tar -xzf docker.tgz --directory /usr/local/bin --no-same-owner --strip=1 docker/docker
     rm -f docker.tgz
