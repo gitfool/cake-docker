@@ -25,6 +25,6 @@ build:
   script:
     - curl -fsSL https://get.docker.com/ | bash -s
     # renovate: datasource=dotnet depName=dotnet-sdk
-    - curl -fsSL https://dot.net/v1/dotnet-install.sh | bash -s -- --version 9.0.203
+    - curl -fsSL https://dot.net/v1/dotnet-install.sh | bash -s -- --version 9.0.305
     - export DOTNET_ROOT=$HOME/.dotnet && export PATH=$DOTNET_ROOT:$PATH
     - dotnet tool restore && dotnet cake --verbosity=verbose
