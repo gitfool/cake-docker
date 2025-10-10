@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM mcr.microsoft.com/dotnet/sdk:9.0.203-noble
+FROM mcr.microsoft.com/dotnet/sdk:9.0.305-noble
 
 LABEL org.opencontainers.image.source=https://github.com/gitfool/cake-docker
 
@@ -29,7 +29,7 @@ EOF
 # renovate: datasource=nuget depName=cake.tool
 RUN <<EOF
     set -ex
-    version=5.0.0
+    version=5.1.0
     dotnet tool install cake.tool --version $version --tool-path /tools
     dotnet nuget locals all --clear
     chmod 755 /tools/dotnet-cake
@@ -45,7 +45,7 @@ ENV Cake_Settings_EnableScriptCache=true \
 RUN <<EOF
     set -ex
     [ "$TARGETARCH" = "amd64" ] && arch="x86_64" || arch="aarch64"
-    version=28.0.4
+    version=28.5.1
     curl -fsSL https://download.docker.com/linux/static/stable/$arch/docker-$version.tgz -o docker.tgz
     tar -xzf docker.tgz --directory /usr/local/bin --no-same-owner --strip=1 docker/docker
     rm -f docker.tgz
@@ -59,7 +59,7 @@ EOF
 RUN <<EOF
     set -ex
     [ "$TARGETARCH" = "amd64" ] && arch="amd64" || arch="arm64"
-    version=0.22.0
+    version=0.29.1
     curl -fsSL https://github.com/docker/buildx/releases/download/v$version/buildx-v$version.linux-$arch -o /usr/local/lib/docker/cli-plugins/docker-buildx
     chmod +x /usr/local/lib/docker/cli-plugins/docker-buildx
     docker buildx version
@@ -70,7 +70,7 @@ EOF
 RUN <<EOF
     set -ex
     [ "$TARGETARCH" = "amd64" ] && arch="x86_64" || arch="aarch64"
-    version=2.35.0
+    version=2.40.0
     curl -fsSL https://github.com/docker/compose/releases/download/v$version/docker-compose-linux-$arch -o /usr/local/lib/docker/cli-plugins/docker-compose
     chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
     docker compose version
