@@ -32,11 +32,11 @@ jobs:
         uses: actions/setup-dotnet@v6.0.0
         with:
           # renovate: datasource=dotnet depName=dotnet-sdk
-          dotnet-version: 10.0.401
+          dotnet-version: 10.0.403
 
       - name: Docker login
         if: github.event_name != 'pull_request'
-        uses: docker/login-action@v4.6.0
+        uses: docker/login-action@v4.7.0
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
@@ -47,7 +47,7 @@ jobs:
           platforms: arm64
 
       - name: Setup buildx
-        uses: docker/setup-buildx-action@v4.4.0
+        uses: docker/setup-buildx-action@v4.4.1
 
       - name: Export runtime
         uses: crazy-max/ghaction-github-runtime@v4.0.0
