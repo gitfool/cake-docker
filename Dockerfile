@@ -21,6 +21,7 @@ RUN <<EOF
     echo "deb [signed-by=/usr/share/keyrings/git-ppa.gpg] https://ppa.launchpadcontent.net/git-core/ppa/ubuntu $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/git-ppa.list
     apt-get update
     apt-get install --no-install-recommends -y git git-lfs
+    git config --system --add safe.directory "*"
     rm -rf /var/lib/apt/lists/*
     mkdir -p /etc/bash_completion.d
 EOF
